@@ -1,2 +1,1 @@
-# db3ppp.github.io
-tech blog
+📌Blog Link: [db3ppp.github.io](https://db3ppp.github.io)
