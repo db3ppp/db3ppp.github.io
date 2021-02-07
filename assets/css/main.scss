@@ -5,7 +5,7 @@
 @import 'normalize';
 @import 'code_style';
 @import 'flexible';
-
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);//google web font added
 
 /* 0. Variables
    ========================================================================== */
@@ -15,19 +15,19 @@
     --header_bg: #fafafa;
     --content_bg: #fff;
     --archive_font: #000;
-    --archive_title: #46a891;
-    --archive_title_hover: #87CDBD;
-    --name_font: #FFAA00;
+    --archive_title: #e69a9a;
+    --archive_title_hover: #ffc800;
+    --name_font: #7a7a7a;
     --job_font: #003845;
-    --nav_font: #8d7edc;
-    --nav_font_hover: #D4CEF2;
+    --nav_font: #ffc800;
+    --nav_font_hover: #ffe380;
     --shadow_color: rgba(160, 160, 160, 0.05);
     --post_title: #003845;
     --post_date: #003845;
     --post_text: #4c4c4c;
     --post_h3: #4c4c4c;
-    --post_link: #46a891;
-    --post_link_hover: #87CDBD;
+    --post_link: #ffc800;
+    --post_link_hover: #ffe380;
     --inlinecode_text: #FFAA00;
     --blockquote: #333;
     --footer_font: #858585;
@@ -111,7 +111,7 @@ body {
     height: 100%;
     font-weight: normal;
     font-style: normal;
-    font-family: -apple-system, BlinkMacSystemFont, 'Titillium Web', "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, 'Titillium Web', "Segoe UI","Noto Sans KR", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0;
     padding: 0;
     background-color: var(--bg_color);
