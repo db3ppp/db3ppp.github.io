@@ -6,101 +6,156 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 13 Feb 2021 16:43:09 +0900</pubDate>
-    <lastBuildDate>Sat, 13 Feb 2021 16:43:09 +0900</lastBuildDate>
+    <pubDate>Sat, 13 Feb 2021 20:04:23 +0900</pubDate>
+    <lastBuildDate>Sat, 13 Feb 2021 20:04:23 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
-        <title>Some articles are just so long they deserve a really long title to see if things will break well</title>
-        <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce bibendum neque eget nunc mattis eu sollicitudin enim tincidunt. Vestibulum lacus tortor, ultricies id dignissim ac, bibendum in velit. Proin convallis mi ac felis pharetra aliquam. Curabitur dignissim accumsan rutrum. In arcu magna, aliquet vel pretium et, molestie et arcu. Mauris lobortis nulla et felis ullamcorper bibendum. Phasellus et hendrerit mauris. Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet bibendum quis a nunc. Praesent varius interdum vehicula. Aenean risus libero, placerat at vestibulum eget, ultricies eu enim. Praesent nulla tortor, malesuada adipiscing adipiscing sollicitudin, adipiscing eget est.&lt;/p&gt;
+        <title>마크다운(Markdown)이랑 친해지기</title>
+        <description>&lt;p&gt;만들어만 두고 방치해뒀던 git 블로그.. 그동안 마크다운이 어렵게만 늦겨져서 네이버 블로그를 운영 해 오다가, 이번에 맥북을 새로 장만하면서 다시 도전해보고 싶었다..ㅎㅎ&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;네이버 블로그&lt;/code&gt;를 운영하면서 편리하다고 생각했던 점은,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;이웃관리&lt;/li&gt;
+  &lt;li&gt;블로그 방문자 통계정보&lt;/li&gt;
+  &lt;li&gt;쉬운 포스팅 에디터&lt;/li&gt;
+  &lt;li&gt;테마 및 스킨 변경 등..&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;전반적으로 진입장벽이 낮아서 블로그를 시작하고 싶은 누구나 가장 쉽게 사용할 수 있을 것이라고 생각한다 !&lt;br /&gt;
+👉🏻 &lt;dfn info=&quot;https://blog.naver.com/db3p&quot;&gt;이사 준비중인 내 Naver Blog&lt;/dfn&gt;&lt;/p&gt;
+
+&lt;p&gt;그에 비해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;깃블로그&lt;/code&gt;는 마크다운 기반으로 포스팅을 해야하고, 원하는 테마를 변경하고, 방문자 통계집계, 댓글기능(using disqus) 조차 일일히 다 추가해주어야 한다는 번거로움이 있다😂 (사실 블로그 첫 포스팅하기 까지 며칠 뚝딱거렸다고 한다)&lt;br /&gt;
+긴 서론은 이제 뒤로하고 마크다운 기본 문법을 정리해보자 히히.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;마크다운-문법-정리&quot;&gt;마크다운 문법 정리&lt;/h2&gt;
+&lt;p&gt;(1) 헤더(header): 글의 제목으로 강조하고 싶을 때&lt;/p&gt;
+
+&lt;p&gt;#개수에 따라 크기별로 표현할 수 있다&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Head 1
+## Head 2
+### Head 3
+#### Head 4
+##### Head 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&quot;head-1&quot;&gt;Head 1&lt;/h1&gt;
+&lt;h2 id=&quot;head-2&quot;&gt;Head 2&lt;/h2&gt;
+&lt;h3 id=&quot;head-3&quot;&gt;Head 3&lt;/h3&gt;
+&lt;h4 id=&quot;head-4&quot;&gt;Head 4&lt;/h4&gt;
+&lt;h5 id=&quot;head-5&quot;&gt;Head 5&lt;/h5&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;(2) 수평선: 내용을 구분하고 싶을 때&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;(3) 목록(list): 나열할 때&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. first
+1. second
+1. third
+
++ 안녕
+    - 반가워
+        * git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;first&lt;/li&gt;
+  &lt;li&gt;second&lt;/li&gt;
+  &lt;li&gt;third&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;안녕
+    &lt;ul&gt;
+      &lt;li&gt;반가워
+        &lt;ul&gt;
+          &lt;li&gt;gitblog&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(4) 강조&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;`색깔`
+__진하게__ **강조**
+_기울이기_ *기울이기*
+&amp;lt;u&amp;gt;밑줄&amp;lt;/u&amp;gt;
+~~취소선~~
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;색깔&lt;/code&gt;&lt;br /&gt;
+&lt;strong&gt;진하게&lt;/strong&gt;  &lt;strong&gt;진하게&lt;/strong&gt;&lt;br /&gt;
+&lt;em&gt;기울이기&lt;/em&gt;  &lt;em&gt;기울이기&lt;/em&gt;&lt;br /&gt;
+&lt;u&gt;밑줄&lt;/u&gt;&lt;br /&gt;
+&lt;del&gt;취소선&lt;/del&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(5) 인용구&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; Love the life you live,
+&amp;gt;&amp;gt; Live the life you love
+&amp;gt;&amp;gt;&amp;gt; -Bob Marley
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Love the life you live,&lt;/p&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Live the life you love&lt;/p&gt;
+    &lt;blockquote&gt;
+      &lt;h2 id=&quot;-bob-marley&quot;&gt;-Bob Marley&lt;/h2&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(6) 링크(link)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;method 1: [Blog Link](https://db3ppp.github.io &quot;마우스 올리면 추가설명&quot;)
+method 2: &amp;lt;https://db3ppp.github.io&amp;gt;
+method 3: [문단 이동하기](#마크다운-문법-정리)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;method 1: &lt;a href=&quot;https://db3ppp.github.io&quot; title=&quot;마우스 올리면 추가설명&quot;&gt;Blog Link&lt;/a&gt;&lt;br /&gt;
+method 2: &lt;a href=&quot;https://db3ppp.github.io&quot;&gt;https://db3ppp.github.io&lt;/a&gt;&lt;br /&gt;
+method 3: &lt;a href=&quot;#마크다운-문법-정리&quot;&gt;문단 이동하기&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;(7) 사진(image) 첨부&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;즉석 url생성 방식&lt;br /&gt;
+github 레파지토리 &amp;gt; Issues &amp;gt; New issue 에서
+    &lt;ol&gt;
+      &lt;li&gt;이미지 파일을 끌어다 놓기&lt;/li&gt;
+      &lt;li&gt;마크다운 링크 문법으로 업로드된 이미지 url주소 복사하기&lt;/li&gt;
+      &lt;li&gt;마크다운 파일에 붙여넣기&lt;br /&gt;
+&lt;em&gt;이 방법은 따로 이미지 파일을 commit안해주어도 되서 편리하다.&lt;/em&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/img/cat.jpg&quot; alt=&quot;Cat&quot; /&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tip&quot;&gt;tip&lt;/h2&gt;
+&lt;p&gt;마크다운 작성 시, 실제 웹 화면에서 어떻게 표현될 지 확인하기 어렵기 때문에 Visual Studio Code에서 다음과 같이 바로바로 확인하면서 작성하면 편리하다.&lt;br /&gt;
+&lt;br /&gt;
+👉🏻 open preview to the side 버튼 클릭
+&lt;img width=&quot;400&quot; alt=&quot;스크린샷 2021-02-13 오후 6 58 06&quot; src=&quot;https://user-images.githubusercontent.com/37920535/107847327-e46f1180-6e2d-11eb-8dfe-cf58c28113a2.png&quot; height=&quot;350&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img width=&quot;400&quot; alt=&quot;스크린샷 2021-02-13 오후 7 00 42&quot; src=&quot;https://user-images.githubusercontent.com/37920535/107847328-ea64f280-6e2d-11eb-820b-4a58a01ccc59.png&quot; height=&quot;350&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+아직 많이 서툴지만, 앞으로 마크다운이랑 친해져서 깃블로그 운영과, 프로젝트 문서를 잘 작성할 수 있었으면 좋겠다 !&lt;/p&gt;
 </description>
-        <pubDate>Wed, 04 Jul 2018 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2018-07/t1</link>
-        <guid isPermaLink="true">http://localhost:4000/2018-07/t1</guid>
+        <pubDate>Sat, 13 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-02/markdown%E1%84%8B%E1%85%B5%E1%84%85%E1%85%A1%E1%86%BC-%E1%84%8E%E1%85%B5%E1%86%AB%E1%84%92%E1%85%A2%E1%84%8C%E1%85%B5%E1%84%80%E1%85%B5</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-02/markdown%E1%84%8B%E1%85%B5%E1%84%85%E1%85%A1%E1%86%BC-%E1%84%8E%E1%85%B5%E1%86%AB%E1%84%92%E1%85%A2%E1%84%8C%E1%85%B5%E1%84%80%E1%85%B5</guid>
         
         
-        <category>travel</category>
-        
-      </item>
-    
-      <item>
-        <title>Sample Post</title>
-        <description>&lt;p&gt;This is a sample post.&lt;br /&gt;
-&lt;dfn info=&quot;You can add extra information&quot;&gt;Hover&lt;/dfn&gt; me.&lt;/p&gt;
-
-&lt;h2 id=&quot;header&quot;&gt;Header&lt;/h2&gt;
-
-&lt;h1 id=&quot;head-1-&quot;&gt;Head 1: ‘#’&lt;/h1&gt;
-&lt;h2 id=&quot;head-2-&quot;&gt;Head 2: ‘##’&lt;/h2&gt;
-&lt;h3 id=&quot;head-3-&quot;&gt;Head 3: ‘###’&lt;/h3&gt;
-
-&lt;h2 id=&quot;code-block&quot;&gt;Code block&lt;/h2&gt;
-&lt;p&gt;A Python Example:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;quote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# Socrates
-&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The only true wisdom is in knowing you know nothing.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;A HTML Example:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;quote&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Maya Angelou --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Try to be a rainbow in someone's cloud.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A C Example:&lt;/p&gt;
-
-&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Confucius&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Everything has beauty, but not everyone sees it.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Wed, 01 Nov 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017-11/s2</link>
-        <guid isPermaLink="true">http://localhost:4000/2017-11/s2</guid>
-        
-        
-        <category>writing</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.md&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Tue, 24 Oct 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2017-10/welcome</link>
-        <guid isPermaLink="true">http://localhost:4000/2017-10/welcome</guid>
-        
-        
-        <category>dev</category>
+        <category>etc</category>
         
       </item>
     

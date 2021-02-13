@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+  <title>마크다운(Markdown)이랑 친해지기 | √grace</title>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Hyewon Kim">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/assets/css/main.css" media="all">
+  <link rel="canonical" href="http://localhost:4000/2021-02/markdown%E1%84%8B%E1%85%B5%E1%84%85%E1%85%A1%E1%86%BC-%E1%84%8E%E1%85%B5%E1%86%AB%E1%84%92%E1%85%A2%E1%84%8C%E1%85%B5%E1%84%80%E1%85%B5">
+  <link rel="alternate" type="application/rss+xml" title="√grace"
+    href="/feed.xml" />
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/assets/img/icon.png" type="image/x-icon" />
+  <link rel="icon" href="/assets/img/icon.png" type="image/x-icon" />
+
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,400i" rel="stylesheet">
+</head>
+
+<body>
+  <div class="content">
+
+    <header class="header">
+
+  <div class="header_content">
+    <label class="theme_changer">
+      <input theme_toggle type="checkbox">
+      <div class="button"></div>
+    </label>
+    <a class="header_circle" href="/">
+      <img src="/assets/img/profile.png" alt="catbook">
+    </a>
+    <span class="header_name">Hyewon Kim</span>
+    <span class="header_job">undergraduate in CS👩🏻‍💻</span>
+    <span class="header_mes"></span>
+
+    <nav class="nav">
+      
+      <ul class="nav_list">
+        <li class="nav_item">
+          <a href="/aboutme.html">about</a>
+        </li>
+      </ul>
+      
+      
+      
+      <ul class="nav_list">
+        <li class="nav_item">
+          <a href="/categories/etc" id="aa">etc
+            (1)</a>
+        </li>
+      </ul>
+      
+    </nav>
+  </div>
+
+</header>
+
+
+
+    <nav class="mobile_menu">
+
+  <ul class="nav_list">
+    
+    <li class="nav_item">
+      <a href="/aboutme.html">about</a>
+    </li>
+
+    
+    
+    
+
+    <li class="nav_item">
+      <a href="/categories/etc" id="aa">etc (1)</a>
+    </li>
+    
+  </ul>
+
+</nav>
+    
+    <main class="main">
+
+    <div class="post">
+  <div>
+    
+    <p class="post_title">마크다운(Markdown)이랑 친해지기</p>
+    
+  </div>
+  <div class="post_data">
+    
+    <span class="post_date">Feb 13, 2021</span>
+    
+    
+    <span class="post_categories">
+      &raquo; 
+      <a href="/categories/etc">etc</a>
+    </span>
+    
+  </div>
+  <div class="post_content">
+    <p>만들어만 두고 방치해뒀던 git 블로그.. 그동안 마크다운이 어렵게만 늦겨져서 네이버 블로그를 운영 해 오다가, 이번에 맥북을 새로 장만하면서 다시 도전해보고 싶었다..ㅎㅎ</p>
+
+<p><code class="language-plaintext highlighter-rouge">네이버 블로그</code>를 운영하면서 편리하다고 생각했던 점은,</p>
+<ul>
+  <li>이웃관리</li>
+  <li>블로그 방문자 통계정보</li>
+  <li>쉬운 포스팅 에디터</li>
+  <li>테마 및 스킨 변경 등..</li>
+</ul>
+
+<p>전반적으로 진입장벽이 낮아서 블로그를 시작하고 싶은 누구나 가장 쉽게 사용할 수 있을 것이라고 생각한다 !<br />
+👉🏻 <dfn info="https://blog.naver.com/db3p">이사 준비중인 내 Naver Blog</dfn></p>
+
+<p>그에 비해 <code class="language-plaintext highlighter-rouge">깃블로그</code>는 마크다운 기반으로 포스팅을 해야하고, 원하는 테마를 변경하고, 방문자 통계집계, 댓글기능(using disqus) 조차 일일히 다 추가해주어야 한다는 번거로움이 있다😂 (사실 블로그 첫 포스팅하기 까지 며칠 뚝딱거렸다고 한다)<br />
+긴 서론은 이제 뒤로하고 마크다운 기본 문법을 정리해보자 히히.</p>
+
+<hr />
+<h2 id="마크다운-문법-정리">마크다운 문법 정리</h2>
+<p>(1) 헤더(header): 글의 제목으로 강조하고 싶을 때</p>
+
+<p>#개수에 따라 크기별로 표현할 수 있다</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Head 1
+## Head 2
+### Head 3
+#### Head 4
+##### Head 5
+</code></pre></div></div>
+<h1 id="head-1">Head 1</h1>
+<h2 id="head-2">Head 2</h2>
+<h3 id="head-3">Head 3</h3>
+<h4 id="head-4">Head 4</h4>
+<h5 id="head-5">Head 5</h5>
+<hr />
+
+<p>(2) 수평선: 내용을 구분하고 싶을 때</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+</code></pre></div></div>
+<hr />
+
+<p>(3) 목록(list): 나열할 때</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. first
+1. second
+1. third
+
++ 안녕
+    - 반가워
+        * git
+</code></pre></div></div>
+<ol>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+</ol>
+
+<ul>
+  <li>안녕
+    <ul>
+      <li>반가워
+        <ul>
+          <li>gitblog</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>(4) 강조</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`색깔`
+__진하게__ **강조**
+_기울이기_ *기울이기*
+&lt;u&gt;밑줄&lt;/u&gt;
+~~취소선~~
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">색깔</code><br />
+<strong>진하게</strong>  <strong>진하게</strong><br />
+<em>기울이기</em>  <em>기울이기</em><br />
+<u>밑줄</u><br />
+<del>취소선</del></p>
+
+<hr />
+
+<p>(5) 인용구</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; Love the life you live,
+&gt;&gt; Live the life you love
+&gt;&gt;&gt; -Bob Marley
+</code></pre></div></div>
+<blockquote>
+  <p>Love the life you live,</p>
+  <blockquote>
+    <p>Live the life you love</p>
+    <blockquote>
+      <h2 id="-bob-marley">-Bob Marley</h2>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>(6) 링크(link)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>method 1: [Blog Link](https://db3ppp.github.io "마우스 올리면 추가설명")
+method 2: &lt;https://db3ppp.github.io&gt;
+method 3: [문단 이동하기](#마크다운-문법-정리)
+</code></pre></div></div>
+<p>method 1: <a href="https://db3ppp.github.io" title="마우스 올리면 추가설명">Blog Link</a><br />
+method 2: <a href="https://db3ppp.github.io">https://db3ppp.github.io</a><br />
+method 3: <a href="#마크다운-문법-정리">문단 이동하기</a></p>
+
+<hr />
+
+<p>(7) 사진(image) 첨부</p>
+
+<ul>
+  <li>즉석 url생성 방식<br />
+github 레파지토리 &gt; Issues &gt; New issue 에서
+    <ol>
+      <li>이미지 파일을 끌어다 놓기</li>
+      <li>마크다운 링크 문법으로 업로드된 이미지 url주소 복사하기</li>
+      <li>마크다운 파일에 붙여넣기<br />
+<em>이 방법은 따로 이미지 파일을 commit안해주어도 되서 편리하다.</em><br />
+<img src="/assets/img/cat.jpg" alt="Cat" /></li>
+    </ol>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="tip">tip</h2>
+<p>마크다운 작성 시, 실제 웹 화면에서 어떻게 표현될 지 확인하기 어렵기 때문에 Visual Studio Code에서 다음과 같이 바로바로 확인하면서 작성하면 편리하다.<br />
+<br />
+👉🏻 open preview to the side 버튼 클릭
+<img width="400" alt="스크린샷 2021-02-13 오후 6 58 06" src="https://user-images.githubusercontent.com/37920535/107847327-e46f1180-6e2d-11eb-8dfe-cf58c28113a2.png" height="350" /></p>
+
+<p><img width="400" alt="스크린샷 2021-02-13 오후 7 00 42" src="https://user-images.githubusercontent.com/37920535/107847328-ea64f280-6e2d-11eb-820b-4a58a01ccc59.png" height="350" /></p>
+
+<p><br />
+<br />
+아직 많이 서툴지만, 앞으로 마크다운이랑 친해져서 깃블로그 운영과, 프로젝트 문서를 잘 작성할 수 있었으면 좋겠다 !</p>
+
+  </div>
+
+
+  
+  <div class="post_comment">
+    
+
+<div id='disqus_thread'></div>
+
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://db3ppp.github.io';
+    this.page.identifier = 'https://db3ppp.github.io';
+  };
+  (function () {
+    var d = document,
+      s = d.createElement('script');
+    s.src = 'https://db3ppp-github-io.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href='https://disqus.com/?ref_noscript'>comments powered by
+    Disqus.</a></noscript>
+
+
+
+
+  </div>
+  
+
+</div>
+
+
+    </main>
+
+  </div>
+
+  <footer class="footer">
+  <div>
+    &copy; 2021 Hyewon Kim.
+    Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>.
+    Get this theme
+    <a href="https://github.com/starry99/catbook" target="_blank">here</a>.
+  </div>
+</footer>
+
+  <!-- js from https://codepen.io/MrGrigri/pen/XQmWBv -->
+
+<script>
+    const themePreference = () => {
+        const hasLocalStorage = localStorage.getItem('theme');
+        let supports = false;
+        let theme = undefined;
+
+        if (hasLocalStorage === 'light') {
+            theme = 'light';
+        }
+        if (hasLocalStorage === 'dark') {
+            theme = 'dark';
+        }
+
+        if (window.matchMedia(`(prefers_color: dark)`).matches) {
+            theme = hasLocalStorage ? hasLocalStorage : 'dark';
+            supports = true;
+        };
+        if (window.matchMedia(`(prefers_color: light)`).matches) {
+            theme = hasLocalStorage ? hasLocalStorage : 'light';
+            supports = true;
+        };
+        if (window.matchMedia(`(prefers_color: no-preference)`).matches) {
+            theme = hasLocalStorage ? hasLocalStorage : 'none';
+            supports = true;
+        };
+
+        return {
+            supports,
+            theme
+        };
+    }
+
+    document.addEventListener('DOMContentLoaded', e => {
+        console.clear();
+
+        const userThemePreference = themePreference();
+        const toggle = document.querySelector('[theme_toggle]');
+        const html = document.documentElement;
+
+        const setTheme = () => {
+            switch (userThemePreference.theme) {
+                case 'dark':
+                    toggle.checked = true;
+                    html.classList.add('dark');
+                    html.classList.remove('light');
+                    break;
+                case 'light':
+                    toggle.checked = false;
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    break;
+            }
+        }
+        setTheme();
+        toggle.addEventListener('click', e => {
+            if (toggle.checked) {
+                html.classList.add('dark');
+                html.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            }
+        }, false);
+    }, false);
+</script>
+</body>
+</html>
