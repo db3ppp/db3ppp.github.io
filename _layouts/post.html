@@ -1,5 +1,6 @@
 ---
 layout: page
+comments: true
 ---
 
 <div class="post">
@@ -25,10 +26,9 @@ layout: page
   </div>
 
 
-  {% if page.comment %}
+  {% if page.comment != false %}
   <div class="post_comment">
-
-    {% include disqus.html username = site.disqus.shortname %}
+    {% include disqus.html %}
 
   </div>
   {% endif %}
