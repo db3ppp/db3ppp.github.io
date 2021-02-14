@@ -6,12 +6,12 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Feb 2021 00:57:21 +0900</pubDate>
-    <lastBuildDate>Mon, 15 Feb 2021 00:57:21 +0900</lastBuildDate>
+    <pubDate>Mon, 15 Feb 2021 01:08:45 +0900</pubDate>
+    <lastBuildDate>Mon, 15 Feb 2021 01:08:45 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
-        <title></title>
+        <title>외부망 통신 흐름 정리 [Network]</title>
         <description>&lt;p&gt;외부망에 있는 서버와 통신하기 위한 traffic 흐름에 대해 정리해 보고자 한다.&lt;br /&gt;
 쉽게 말하면, 우리는 모든 웹사이트들을 www.youtube.com과 같이 도메인명을 통해서 접속한다. 우리가 유튜브의 ip주소를 통해서 검색하려고 하지도, 알 필요도 없다 ! 그치만 같은 통신망이 아닌, 외부 통신망의 목적지 ip주소를 알아야만 통신이 가능한데 이는, 어떻게 이루어지고 있는 것일까?&lt;/p&gt;
 
@@ -79,10 +79,12 @@
 
 &lt;p&gt;네트워크는 뭐 하나를 알면 알수록, 더욱 더 알아야 할 것들이 많아지는 분야인 것 같다..😂   학부과정으로 네트워크 과목을 들을 때도 엄청나게 광범위한 내용을 배우느라 어려웠던 기억이 있는데, 실무에서 경험하고 배우면서 더 공부해 나가야 할 것 같다 !&lt;/p&gt;
 </description>
-        <pubDate>Mon, 15 Feb 2021 00:57:21 +0900</pubDate>
-        <link>http://localhost:4000/2021-02/2021-02-14-Network-%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%86%E1%85%A1%E1%86%BC-%E1%84%90%E1%85%A9%E1%86%BC%E1%84%89%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B3%E1%84%85%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-02/2021-02-14-Network-%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%86%E1%85%A1%E1%86%BC-%E1%84%90%E1%85%A9%E1%86%BC%E1%84%89%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B3%E1%84%85%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5</guid>
+        <pubDate>Sun, 14 Feb 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-02/Network-%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%86%E1%85%A1%E1%86%BC-%E1%84%90%E1%85%A9%E1%86%BC%E1%84%89%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B3%E1%84%85%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-02/Network-%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%86%E1%85%A1%E1%86%BC-%E1%84%90%E1%85%A9%E1%86%BC%E1%84%89%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B3%E1%84%85%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5</guid>
         
+        
+        <category>study</category>
         
       </item>
     
