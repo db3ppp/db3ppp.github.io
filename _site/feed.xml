@@ -6,9 +6,85 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 13 Feb 2021 20:04:23 +0900</pubDate>
-    <lastBuildDate>Sat, 13 Feb 2021 20:04:23 +0900</lastBuildDate>
+    <pubDate>Mon, 15 Feb 2021 00:57:21 +0900</pubDate>
+    <lastBuildDate>Mon, 15 Feb 2021 00:57:21 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title></title>
+        <description>&lt;p&gt;외부망에 있는 서버와 통신하기 위한 traffic 흐름에 대해 정리해 보고자 한다.&lt;br /&gt;
+쉽게 말하면, 우리는 모든 웹사이트들을 www.youtube.com과 같이 도메인명을 통해서 접속한다. 우리가 유튜브의 ip주소를 통해서 검색하려고 하지도, 알 필요도 없다 ! 그치만 같은 통신망이 아닌, 외부 통신망의 목적지 ip주소를 알아야만 통신이 가능한데 이는, 어떻게 이루어지고 있는 것일까?&lt;/p&gt;
+
+&lt;h2 id=&quot;외부망-traffic-흐름&quot;&gt;외부망 traffic 흐름&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/37920535/107878549-c3ceb680-6f16-11eb-8457-a24449e76089.jpg&quot; alt=&quot;IMG_0300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;클라이언트 A에서 외부망에 있는 웹서버(DNS server)에 통신을 하기까지의 흐름들을 간략히 알아보자. 
+&lt;em&gt;(클라이언트 A는 웹서버의 ip주소를 알지 못하고, 도메인명 www.test.com만 알고 있는 상태이다)&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;먼저, &lt;strong&gt;DNS를 이용하여 수신지 웹서버의 ip주소를 획득&lt;/strong&gt;한다. (192.168.5.10)&lt;/li&gt;
+  &lt;li&gt;송신자 A의 subnetmask를 이용하여 &lt;strong&gt;통신하려는 수신자가 내부망에 있는지, 외부망에 있는 지 확인&lt;/strong&gt;한다.&lt;br /&gt;
+송신지 subnetmask: 255.255.255.0
+수신지 ip: address: 192.168.5.10
+    &lt;ul&gt;
+      &lt;li&gt;두 정보를 and연산을 통해 계산 =&amp;gt; networkID: 192.168.5.0&lt;/li&gt;
+      &lt;li&gt;송신지 ip주소와 and연산을 했을 때도 계산 =&amp;gt;networkID: 192.168.1.0&lt;br /&gt;
+&lt;u&gt;∴ 송신지와 수신지는 networkID가 동일하지 않으므로 외부망에 있다 !&lt;/u&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;목적지의 ip만으로는 통신을 할 수 없다. 웹서버의 MAC주소 또한 필요한데, 외부망에 있는 웹서버까지 도달하기 위해서는 중간의 router 1,2를 반드시 거쳐 가야한다. 그러므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가장먼저 gateway인 R1의 mac주소를 획득해야한다⭐️&lt;/code&gt; &lt;br /&gt;
+ 3-1. 먼저 gateway의 &lt;strong&gt;ARP table에 목적지의 mac주소가 있는 지 check&lt;/strong&gt;.&lt;br /&gt;
+ 3-2. 없다면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARP request&lt;/code&gt; 패킷(broadcast)을 보낸다. &lt;u&gt;(너 gateway mac주소 있어 ?)&lt;/u&gt;&lt;br /&gt;
+ 3-3. gateway의 MAC주소를 알고있는 R1만이 해당 패킷을 받게되고, 나머지 호스트들은 받은 패킷을 버린다.&lt;br /&gt;
+ 3-4. R1에서 클라이언트 A로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARP reply&lt;/code&gt; 패킷(unicast)을 보내고, &lt;u&gt;(나 gateway mac주소 있어 !)&lt;/u&gt; 웹서버의 ARP 캐시 테이블에 ip,mac주소를 기록한다.&lt;br /&gt;
+ 3-5. ARP reply 패킷을 받은 client는 gateway의 mac주소를 자신의 ARP 캐시 테이블에 기록한다. &lt;em&gt;(ARP 테이블에는 항상 라우터의 주소만 남게 된다.)&lt;/em&gt;
+ &lt;br /&gt;
+ &lt;br /&gt;
+👉🏻이런식으로 gateway router의 mac주소를 알았다면, 이제 부터는 !!&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Meadia translation 방법&lt;/code&gt;으로 traffic 전송&lt;br /&gt;
+ | | 송신지ip|수신지ip|송신지 mac|수신지 mac|
+ |—|—|—|—|—|
+ |A-&amp;gt;R1|192.168.1.0|192.168.5.10|1111.1111.1111|2222.2222.2222|
+ |R1-&amp;gt;R2|192.168.1.0|192.168.5.10|333.|4444.|
+ |R2-&amp;gt;DNS|192.168.1.0|192.168.5.10|5555.|6666.|&lt;/p&gt;
+
+    &lt;dl&gt;
+      &lt;dt&gt;&lt;strong&gt;media translation이란?&lt;/strong&gt;&lt;/dt&gt;
+      &lt;dd&gt;packet이 출발지에서 목적지까지 가는 동안, router를 거칠 때 마다 frame header를 변경하면서 mac address가 변환된다.(ip주소는 변동 x)&lt;br /&gt;
+ &lt;em&gt;테이블을 보면, ip주소는 변동되지 않지만 송,수신지 mac address는 계속해서 바뀌어지고 있는 것을 알 수 있다.&lt;/em&gt;&lt;br /&gt;
+ &lt;a href=&quot;#why-media-translation?&quot;&gt;media translation 왜 사용하는데?&lt;/a&gt;&lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Router1의 routing table에 다음과 같이 나타낼 수 있는데, 
+| destination | next hop | interface |&lt;br /&gt;
+|—|—|—|
+| 192.168.1.0/30 | connected | Fa0/0 |
+| 192.168.3.0/30 | connected | Fa0/1 |&lt;/p&gt;
+
+&lt;p&gt;👉🏻 이렇게 라우터의 routing table에 자신과 연결되어 있는 정보들을 통해서, 목적지까지 쭉쭉 찾아가 통신하게 된다.(따라서 라우터 관리자는 테이블에 경로를 정적/동적 방법을 통해 잘 관리해주어야 한다.)&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;why-media-translation&quot;&gt;Why media translation?&lt;/h3&gt;
+&lt;p&gt;이러한 routing table에서는 multicast, broadcast 패킷에 대해서는 기록하지 않고 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;폐기&lt;/code&gt;해버린다. 그렇기 때문에 외부망에 대한 ARP request(broadcast)는 불가능하게 되어 버린다❗️&lt;br /&gt;
+&lt;u&gt;∴ 그래서, 외부망에서 media translation방법으로 통신을 하게 되는 것이다.&lt;/u&gt;&lt;br /&gt;
+(TMI: 그에비해 switch의 mac address table에는 목적지에 대한 mac주소가 없어도, 폐기하지 않고 flooding방식으로 송신지 포트를 제외한 나머지 포트들로 트래픽을 전송한다..ㅎㅎ)&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;네트워크는 뭐 하나를 알면 알수록, 더욱 더 알아야 할 것들이 많아지는 분야인 것 같다..😂   학부과정으로 네트워크 과목을 들을 때도 엄청나게 광범위한 내용을 배우느라 어려웠던 기억이 있는데, 실무에서 경험하고 배우면서 더 공부해 나가야 할 것 같다 !&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Feb 2021 00:57:21 +0900</pubDate>
+        <link>http://localhost:4000/2021-02/2021-02-14-Network-%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%86%E1%85%A1%E1%86%BC-%E1%84%90%E1%85%A9%E1%86%BC%E1%84%89%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B3%E1%84%85%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-02/2021-02-14-Network-%E1%84%8B%E1%85%AC%E1%84%87%E1%85%AE%E1%84%86%E1%85%A1%E1%86%BC-%E1%84%90%E1%85%A9%E1%86%BC%E1%84%89%E1%85%B5%E1%86%AB%E1%84%92%E1%85%B3%E1%84%85%E1%85%B3%E1%86%B7-%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%85%E1%85%B5</guid>
+        
+        
+      </item>
     
       <item>
         <title>마크다운(Markdown)이랑 친해지기</title>
