@@ -6,12 +6,12 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Feb 2021 01:08:45 +0900</pubDate>
-    <lastBuildDate>Mon, 15 Feb 2021 01:08:45 +0900</lastBuildDate>
+    <pubDate>Mon, 29 Mar 2021 22:51:32 +0900</pubDate>
+    <lastBuildDate>Mon, 29 Mar 2021 22:51:32 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
-        <title>외부망 통신 흐름 정리 [Network]</title>
+        <title>Network_외부망 통신 흐름 정리</title>
         <description>&lt;p&gt;외부망에 있는 서버와 통신하기 위한 traffic 흐름에 대해 정리해 보고자 한다.&lt;br /&gt;
 쉽게 말하면, 우리는 모든 웹사이트들을 www.youtube.com과 같이 도메인명을 통해서 접속한다. 우리가 유튜브의 ip주소를 통해서 검색하려고 하지도, 알 필요도 없다 ! 그치만 같은 통신망이 아닌, 외부 통신망의 목적지 ip주소를 알아야만 통신이 가능한데 이는, 어떻게 이루어지고 있는 것일까?&lt;/p&gt;
 
@@ -20,13 +20,17 @@
 
 &lt;p&gt;클라이언트 A에서 외부망에 있는 웹서버(DNS server)에 통신을 하기까지의 흐름들을 간략히 알아보자. 
 &lt;em&gt;(클라이언트 A는 웹서버의 ip주소를 알지 못하고, 도메인명 www.test.com만 알고 있는 상태이다)&lt;/em&gt; &lt;br /&gt;
+&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;먼저, &lt;strong&gt;DNS를 이용하여 수신지 웹서버의 ip주소를 획득&lt;/strong&gt;한다. (192.168.5.10)&lt;/li&gt;
-  &lt;li&gt;송신자 A의 subnetmask를 이용하여 &lt;strong&gt;통신하려는 수신자가 내부망에 있는지, 외부망에 있는 지 확인&lt;/strong&gt;한다.&lt;br /&gt;
-송신지 subnetmask: 255.255.255.0
-수신지 ip: address: 192.168.5.10
+  &lt;li&gt;
+    &lt;p&gt;먼저, &lt;strong&gt;DNS를 이용하여 수신지 웹서버의 ip주소를 획득&lt;/strong&gt;한다. (192.168.5.10)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;송신자 A의 subnetmask를 이용하여 &lt;strong&gt;통신하려는 수신자가 내부망에 있는지, 외부망에 있는 지 확인&lt;/strong&gt;한다.
     &lt;ul&gt;
+      &lt;li&gt;송신지 subnetmask: 255.255.255.0&lt;/li&gt;
+      &lt;li&gt;수신지 ip address: 192.168.5.10&lt;/li&gt;
       &lt;li&gt;두 정보를 and연산을 통해 계산 =&amp;gt; networkID: 192.168.5.0&lt;/li&gt;
       &lt;li&gt;송신지 ip주소와 and연산을 했을 때도 계산 =&amp;gt;networkID: 192.168.1.0&lt;br /&gt;
 &lt;u&gt;∴ 송신지와 수신지는 networkID가 동일하지 않으므로 외부망에 있다 !&lt;/u&gt;&lt;/li&gt;
@@ -41,31 +45,20 @@
  &lt;br /&gt;
  &lt;br /&gt;
 👉🏻이런식으로 gateway router의 mac주소를 알았다면, 이제 부터는 !!&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Meadia translation 방법&lt;/code&gt;으로 traffic 전송&lt;br /&gt;
- | | 송신지ip|수신지ip|송신지 mac|수신지 mac|
- |—|—|—|—|—|
- |A-&amp;gt;R1|192.168.1.0|192.168.5.10|1111.1111.1111|2222.2222.2222|
- |R1-&amp;gt;R2|192.168.1.0|192.168.5.10|333.|4444.|
- |R2-&amp;gt;DNS|192.168.1.0|192.168.5.10|5555.|6666.|&lt;/p&gt;
-
-    &lt;dl&gt;
-      &lt;dt&gt;&lt;strong&gt;media translation이란?&lt;/strong&gt;&lt;/dt&gt;
-      &lt;dd&gt;packet이 출발지에서 목적지까지 가는 동안, router를 거칠 때 마다 frame header를 변경하면서 mac address가 변환된다.(ip주소는 변동 x)&lt;br /&gt;
- &lt;em&gt;테이블을 보면, ip주소는 변동되지 않지만 송,수신지 mac address는 계속해서 바뀌어지고 있는 것을 알 수 있다.&lt;/em&gt;&lt;br /&gt;
- &lt;a href=&quot;#why-media-translation?&quot;&gt;media translation 왜 사용하는데?&lt;/a&gt;&lt;/dd&gt;
-    &lt;/dl&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Meadia translation 방법&lt;/code&gt;으로 traffic 전송&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;Router1의 routing table에 다음과 같이 나타낼 수 있는데, 
-| destination | next hop | interface |&lt;br /&gt;
-|—|—|—|
-| 192.168.1.0/30 | connected | Fa0/0 |
-| 192.168.3.0/30 | connected | Fa0/1 |&lt;/p&gt;
+&lt;p&gt;&lt;img width=&quot;593&quot; alt=&quot;스크린샷 2021-03-29 오후 10 44 02&quot; src=&quot;https://user-images.githubusercontent.com/37920535/112845992-7c744200-90e0-11eb-8c72-0c484787f02f.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;👉🏻 이렇게 라우터의 routing table에 자신과 연결되어 있는 정보들을 통해서, 목적지까지 쭉쭉 찾아가 통신하게 된다.(따라서 라우터 관리자는 테이블에 경로를 정적/동적 방법을 통해 잘 관리해주어야 한다.)&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;media translation이란?&lt;/strong&gt;&lt;br /&gt;
+    : packet이 출발지에서 목적지까지 가는 동안, router를 거칠 때 마다 frame header를 변경하면서 mac address가 변환된다.(ip주소는 변동 x)&lt;br /&gt;
+    &lt;em&gt;테이블을 보면, ip주소는 변동되지 않지만 송,수신지 mac address는 계속해서 바뀌어지고 있는 것을 알 수 있다.&lt;/em&gt;&lt;br /&gt;
+    &lt;a href=&quot;#why-media-translation?&quot;&gt;media translation 왜 사용하는데?&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;&lt;br /&gt;&lt;/h2&gt;
+&lt;p&gt;Router1의 routing table에 다음과 같이 나타낼 수 있는데,  &lt;br /&gt;
+&lt;img width=&quot;336&quot; alt=&quot;스크린샷 2021-03-29 오후 10 44 10&quot; src=&quot;https://user-images.githubusercontent.com/37920535/112846235-cb21dc00-90e0-11eb-9f5d-7cd84fc32c01.png&quot; /&gt;&lt;br /&gt;
+👉🏻 이렇게 라우터의 routing table에 자신과 연결되어 있는 정보들을 통해서, 목적지까지 쭉쭉 찾아가 통신하게 된다.(따라서 라우터 관리자는 테이블에 경로를 정적/동적 방법을 통해 잘 관리해주어야 한다.)&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;why-media-translation&quot;&gt;Why media translation?&lt;/h3&gt;
